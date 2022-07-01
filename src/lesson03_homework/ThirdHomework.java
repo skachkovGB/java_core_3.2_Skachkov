@@ -43,8 +43,33 @@ public class ThirdHomework {
         System.out.println("Compare firstBox(Apple) and thirdBox(Apple), result: " + firstBox.compareBox(thirdBox));
 
         System.out.println("===============================");
-        firstBox.swapFruit(thirdBox);
 
+
+        Apple[] applesKostilArray = new Apple[20];
+        for (int i = 0; i < 5; i++) {
+            applesKostilArray[i]= new Apple();
+        }
+        Box<Apple> kostilBigBoxIsGovnaiPalok = new Box<>(applesKostilArray);
+        System.out.println("Wrong weight not full box " + kostilBigBoxIsGovnaiPalok.weightBox());
+        System.out.println("Correct weight not full box " + kostilBigBoxIsGovnaiPalok.weightNotFullBox());
+
+        //только для костыльного массива
+        Apple oneApple = new Apple();
+        kostilBigBoxIsGovnaiPalok.addFruit(oneApple);
+        System.out.println("Plus one weight not full box " + kostilBigBoxIsGovnaiPalok.weightNotFullBox());
+        Orange oneOrange = new Orange();
+        //Ошибка!!! не дает так сделать, джава умная!
+        //kostilBigBoxIsGovnaiPalok.addFruit(oneOrange);
+
+        kostilBigBoxIsGovnaiPalok.swapFruit(firstBox);
+        System.out.println("Plus firstbox weight not full box " + kostilBigBoxIsGovnaiPalok.weightNotFullBox());
+        System.out.println("first box weight empty box " + firstBox.weightNotFullBox());
+
+
+        System.out.println("===============================");
+
+        System.out.println("I AM SURRENDER, GO TO ARRAY LIST");
+        System.out.println("===============================");
 
     }
 }

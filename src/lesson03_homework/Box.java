@@ -5,7 +5,7 @@ import java.lang.reflect.Array;
 public class Box <T extends Fruit>{
 
     private T[] arrayFruit;
-    private T[] newArrayFruit;
+
     public Box (T[] arrayFruit){
         setArrayFruit(arrayFruit);
     }
@@ -18,24 +18,41 @@ public class Box <T extends Fruit>{
         return arrayFruit[0].getAFruitWeight()*arrayFruit.length;
     }
 
+    public double weightNotFullBox(){
+        if(arrayFruit[0]!=null){
+            return arrayFruit[0].getAFruitWeight()*this.getSize();
+        } else return 0;
+    }
+
+
+    //подсмотрел у Преподавателя
+    private int getSize(){
+        int result = 0;
+        for(T t: arrayFruit){
+            if(t!=null)result++;
+        }
+        return result;
+    }
+
     public boolean compareBox(Box box){
-        return weightBox() == box.weightBox();
+        return this.weightBox() == box.weightBox();
     }
 
     public void swapFruit(Box<T> box){
-        for (int i = this.arrayFruit.length; i < this.arrayFruit.length + box.arrayFruit.length; i++) {
-            this.newArrayFruit[i] = box.arrayFruit[i-this.arrayFruit.length];
+        int arrayFirstSize = box.getSize();
+        int arraySecondSize = box.getSize();
+        for (int i = arrayFirstSize; i < arrayFirstSize + arraySecondSize; i++) {
+            arrayFruit[i] = box.arrayFruit[i-arraySecondSize];
+            box.arrayFruit[i-arrayFirstSize]=null;
+//        for (int i = this.arrayFruit.length; i < this.arrayFruit.length + box.arrayFruit.length; i++) {
+//            this.newArrayFruit[i] = box.arrayFruit[i-this.arrayFruit.length];
         }
     }
 
     public void addFruit(T fruit){
         //Почему я не могу вот так сделать)))
-        T[] newArrayFruit = new T[arrayFruit.length + 1];
-
-        for (int i = 0; i < arrayFruit.length; i++) {
-            newArrayFruit[i] = arrayFruit[i];
-        }
-        newArrayFruit[arrayFruit.length] = fruit;
+        //T[] newArrayFruit = new T[arrayFruit.length + 1];
+        arrayFruit[this.getSize()] = fruit;
     }
 
 }
