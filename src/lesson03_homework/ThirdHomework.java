@@ -37,7 +37,7 @@ public class ThirdHomework {
         System.out.println("Weight orangeArray2 is " + fourthBox.weightBox());
 
         System.out.println("===============================");
-        System.out.println("Compare thirdBox(Apple) and fourthBox(Orange), result: " + thirdBox.compareBox(fourthBox));
+        //System.out.println("Compare thirdBox(Apple) and fourthBox(Orange), result: " + thirdBox.compareBox(fourthBox));
 
         Box<Apple> firstBox = new Box<>(applesArray);
         Box<Orange> secondBox = new Box<>(orangeArray);

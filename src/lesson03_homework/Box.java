@@ -34,8 +34,10 @@ public class Box <T extends Fruit>{
         return result;
     }
 
-    public boolean compareBox(Box box){
-        return this.weightBox() == box.weightBox();
+    public boolean compareBox(Box <T> box){
+        if(this.weightBox() == box.weightBox()) return true;
+        return false;
+        //return this.weightBox() == box.weightBox();
     }
 
     public void swapFruit(Box<T> box){
