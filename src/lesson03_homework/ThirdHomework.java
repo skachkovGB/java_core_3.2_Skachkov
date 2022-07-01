@@ -1,6 +1,8 @@
 package lesson03_homework;
 
 
+import java.util.ArrayList;
+
 public class ThirdHomework {
     public static void main(String[] args) {
 
@@ -70,6 +72,43 @@ public class ThirdHomework {
 
         System.out.println("I AM SURRENDER, GO TO ARRAY LIST");
         System.out.println("===============================");
+        
+        ArrayList<Apple> firstAppleList = new ArrayList<>(10);
+        for (int i = 0; i < 5; i++) {
+             firstAppleList.add(new Apple());
+        }
+
+        BoxList<Apple> appleBoxList = new BoxList<>(firstAppleList);
+        System.out.println("appleBoxList weight not full box " + appleBoxList.weightNotFullBoxList());
+        appleBoxList.addFruitList(new Apple());
+        System.out.println("Plus one Apple, appleBoxList weight not full box " + appleBoxList.weightNotFullBoxList());
+
+        ArrayList<Apple> secondAppleList = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            secondAppleList.add(new Apple());
+        }
+        BoxList<Apple> secondBoxList = new BoxList<>(secondAppleList);
+        appleBoxList.swapFruitList(secondBoxList);
+        System.out.println("first+second BoxList weight is " + appleBoxList.weightNotFullBoxList());
+        //Это треш угар и садомия, после Arraylist.clear() лист пустой и проверка !=null не работает, костыльно добавляю первый нулевый элемент, чтобы можно было проверить
+        System.out.println("second BoxList empty? " + secondBoxList.weightNotFullBoxList());
+
+
+        System.out.println("===============================");
+        ArrayList<Apple> thirdAppleList = new ArrayList<>(10);
+        for (int i = 0; i < 5; i++) {
+            thirdAppleList.add(new Apple());
+        }
+        BoxList<Apple> thirdBoxList = new BoxList<>(thirdAppleList);
+        //Очень хитро, что у преподавателя второй лист без указания размерности и получается нет ошибки обхода листа и копирования элементов при этом.
+        //Костыль детектед!
+        System.out.println("third BoxList weight is " + thirdBoxList.weightNotFullBoxList());
+        appleBoxList.notKostilSwap(thirdBoxList);
+        System.out.println("first+second+third BoxList weight is " + appleBoxList.weightNotFullBoxList());
+        System.out.println("third BoxList weight is " + thirdBoxList.weightNotFullBoxList());
+
+
+
 
     }
 }
