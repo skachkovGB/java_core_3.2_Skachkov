@@ -18,10 +18,10 @@ public class Box <T extends Fruit>{
         return arrayFruit[0].getAFruitWeight()*arrayFruit.length;
     }
 
-    public double weightNotFullBox(){
+    public Double weightNotFullBox(){
         if(arrayFruit[0]!=null){
             return arrayFruit[0].getAFruitWeight()*this.getSize();
-        } else return 0;
+        } else return 0.0;
     }
 
 
@@ -34,7 +34,7 @@ public class Box <T extends Fruit>{
         return result;
     }
 
-    public boolean compareBox(Box <T> box){
+    public boolean compareBox(Box<? extends Fruit> box){
         if(this.weightBox() == box.weightBox()) return true;
         return false;
         //return this.weightBox() == box.weightBox();
