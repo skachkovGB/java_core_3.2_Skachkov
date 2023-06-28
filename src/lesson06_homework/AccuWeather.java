@@ -17,10 +17,6 @@ public class AccuWeather {
     private static final String API_VERSION  = "v1";
     private static final String FORECAST_TYPE = "daily";
     private static final String FORECAST_PERIOD = "5day";
-    //апи преподавателя
-    //private static final String API_KEY = "0d1tNZJPfzzT3qGokM18FGGxAUpt7hpj";
-
-    //мой апи
     private static final String API_KEY = "mgPjd6vwVXp3KnfFrsGw0xJ9czVQz36u";
 
     private static final String SAINT_PETERSBURG_KEY = "";  // не нашел
@@ -34,7 +30,6 @@ public class AccuWeather {
 
         OkHttpClient client = new OkHttpClient();
 
-
         // Сегментированное построение URL
         HttpUrl url = new HttpUrl.Builder()
                 .scheme("http")
@@ -45,21 +40,13 @@ public class AccuWeather {
                 .addPathSegment(FORECAST_PERIOD)
                 .addPathSegment(MOSCOW)
                 .addQueryParameter("apikey", API_KEY)
-                //.addQueryParameter("language", "ru-ru") // кодировка не настроена, ру не читается
-                //.addQueryParameter("metric", "true")
                 .build();
 
         System.out.println(url.toString());
 
-        // При необходимости указать заголовки
         Request request = new Request.Builder()
-                //.addHeader("accept", "application/json")
                 .url(url)
                 .build();
-
-        /*Response oneDayForecastResponse = okHttpClient.newCall(request).execute();
-        String weatherResponse = oneDayForecastResponse.body().string();
-        System.out.println(weatherResponse);*/
 
         String jsonResponse = client.newCall(request).execute().body().string();
         System.out.println(jsonResponse);
