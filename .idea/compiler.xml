@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="java_core_3.2_Skachkov" target="1.7" />
+      <module name="java_core_3.2_Skachkov" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
