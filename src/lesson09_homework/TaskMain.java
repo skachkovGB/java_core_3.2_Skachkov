@@ -9,17 +9,7 @@ public class TaskMain {
 
     public static void main(String[] args) {
 
-
-        List<Course> courses = new ArrayList<>();
-        for (int i = 0; i < 6; i++) {
-            courses.add(i, new Course(String.valueOf("course_"+i)));
-        }
-
-        List<Student> students = new ArrayList<>();
-        students.add(new Student("Ivan", Arrays.asList(courses.get(1), courses.get(4))));
-        students.add(new Student("Sidor", Arrays.asList(courses.get(0), courses.get(1), courses.get(2), courses.get(3))));
-        students.add(new Student("Mydak", Arrays.asList(courses.get(0))));
-        students.add(new Student("Otlichnica", Arrays.asList(courses.get(0),courses.get(1),courses.get(2),courses.get(3),courses.get(4),courses.get(5))));
+        List<Student> students = studentsSettings();
 
         System.out.println("=======================================1==========================================");
 
@@ -46,7 +36,7 @@ public class TaskMain {
         }
 
         System.out.println("=======================================3==========================================");
-        Course searchCourse = courses.get(5);
+        Course searchCourse = new Course("course_5");
         System.out.println(students.stream().filter(s -> s.getCourses().contains(searchCourse)).collect(Collectors.toList()));
 
         List<Student> studentsTask3 = students
@@ -57,35 +47,45 @@ public class TaskMain {
         System.out.println(studentsTask3.get(0).getName());
         System.out.println("==================================================================================");
 
+}
 
 
-        /*List<Student> result = getListOfStudent(3,3);
-        //1 задание
-        result.stream().flatMap(student -> student.getCourses().stream()).distinct().collect(Collectors.toList());
-        result.stream().flatMap(student -> student.getCourses().stream()).collect(Collectors.toSet());
+    private static List<Student> studentsSettings(){
 
-        //2 задание
-        result.stream().sorted((student1,student2) -> student1.getCourses().size() - student2.getCourses().size()).limit(3).collect(Collectors.toList());
-
-        //3 задание
-        Course paramCourse = new Course("course1");
-        result.stream().filter(student -> student.getCourses().contains(paramCourse)).collect(Collectors.toList());
-
-        System.out.println();*/
-
-    }
-    /*
-    private static List<Student> getListOfStudent(int j, int m){
-        ArrayList<Student> result = new ArrayList<>();
-        for (int i=0; i<j ;i++){
-            ArrayList<Course> courses = new ArrayList<>();
-            for (int s=0; s<m ;s++){
-                courses.add(new Course("course"+s));
-            }
-            result.add(new Student("student"+i, courses));
+        List<Course> courses = new ArrayList<>();
+        for (int i = 0; i < 6; i++) {
+            courses.add(i, new Course("course_"+i));
         }
-        return result;
-    }*/
+
+        List<Student> students = new ArrayList<>();
+
+        ArrayList<Course> ivanCourses = new ArrayList<>();
+        ivanCourses.add(courses.get(1));
+        ivanCourses.add(courses.get(4));
+        students.add(new Student("Ivan", ivanCourses));
+
+        ArrayList<Course> sidorCourses = new ArrayList<>();
+        sidorCourses.add(courses.get(0));
+        sidorCourses.add(courses.get(1));
+        sidorCourses.add(courses.get(2));
+        sidorCourses.add(courses.get(3));
+        students.add(new Student("Sidor", sidorCourses));
+
+        ArrayList<Course> mCourses = new ArrayList<>();
+        mCourses.add(courses.get(0));
+        students.add(new Student("Mydak", mCourses));
+
+
+        ArrayList<Course> otlCourses = new ArrayList<>();
+        otlCourses.add(courses.get(0));
+        otlCourses.add(courses.get(1));
+        otlCourses.add(courses.get(2));
+        otlCourses.add(courses.get(3));
+        otlCourses.add(courses.get(4));
+        otlCourses.add(courses.get(5));
+        students.add(new Student("Otlichnica", otlCourses));
+        return students;
+    }
 
 }
 
